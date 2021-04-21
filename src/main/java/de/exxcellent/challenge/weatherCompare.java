@@ -7,6 +7,7 @@ package de.exxcellent.challenge;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import static java.lang.Math.abs;
 
 /**
  *
@@ -14,12 +15,32 @@ import java.io.IOException;
  */
 public class weatherCompare {
     
-    public String getLowestDiverence(BufferedReader reader) throws IOException{
+    
+    /*
+    *
+    */
+    public String getLowestDiverence(BufferedReader reader, Integer valueToCompare1, Integer valueToCompare2) throws IOException{
         
-        String sCurrentLine;
-        while ((sCurrentLine = reader.readLine()) != null){        
-            sCurrentLine.substring(0, sCurrentLine.indexOf(","));
+        String fieldOfInterest = "";
+        String currentLine = "";
+        String nameOfLowestDiv = "";
+        String valueOfInterest1 = "";
+        String valueOfInterest2 = "";
+        Integer div = 100;
+        getValuesFromString values = new getValuesFromString();
+        
+        reader.readLine();//to get rid of the first line with no relevant datad
+        while ((currentLine = reader.readLine()) != null){        
+            values.extractValues(currentLine);
+            fieldOfInterest = values.values[0];
+            valueOfInterest2 = values.values[valueToCompare1];
+            valueOfInterest1 = values.values[valueToCompare2];
+                   
+            if(div > abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1))){
+                nameOfLowestDiv = fieldOfInterest;
+                div = abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1));
+            }
         }
-        return "";
+        return nameOfLowestDiv;
     }
 }

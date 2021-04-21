@@ -19,17 +19,22 @@ public final class App {
     public static void main(String... args) {
 
         // Your preparation code …
-        read_file read_file = new read_file();
+        readFile readFile = new readFile();
+        weatherCompare weather = new weatherCompare();
+        String dayWithSmallestTempSpread = "";
+        String teamWithSmallestGoalSpread = "";
+        
         try {
-            read_file.file_stream("C:/Users/klaus/Documents/GitHub/programming-challenge/src/main/resources/de/exxcellent/challenge/weather.csv");
+            dayWithSmallestTempSpread = weather.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/weather.csv"), 1, 2);
+            teamWithSmallestGoalSpread = weather.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/football.csv"), 5, 6);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
+        //String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
-        System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
+        //String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
+        System.out.printf("Team with smallest goal spread: %s%n", teamWithSmallestGoalSpread);
     }
 }
