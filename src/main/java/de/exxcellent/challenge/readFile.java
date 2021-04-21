@@ -13,6 +13,12 @@ import java.io.*;
  */
 public class readFile {
     
+    /*  \brief      read from file
+    *
+    *   \details    create a reader to gat all the data from a csv file and return the reader.
+    *
+    *   \param  path    the path of the file that needs to be read    
+    */
     public BufferedReader fileStream(String path) throws FileNotFoundException, IOException{
         
         BufferedReader reader = new BufferedReader(new FileReader(path));

@@ -16,8 +16,16 @@ import static java.lang.Math.abs;
 public class weatherCompare {
     
     
-    /*
-    *
+    /*  \brief      get name of line with lowest difference
+    *  
+    *   \deatails   extracts data from a csv files and compares the values of the selected
+    *               fields. The name or first value of the specific line is returned.
+    *    
+    *   \param      reader              with the date of the specidied csv data
+    *   \param      valueToCompare1     first value for the comparison
+    *   \param      valueToCompare2     second value for the comparison
+    *   
+    *   \retval     nameOfLowestDiv     The name or first value of the specific line
     */
     public String getLowestDiverence(BufferedReader reader, Integer valueToCompare1, Integer valueToCompare2) throws IOException{
         
@@ -26,7 +34,7 @@ public class weatherCompare {
         String nameOfLowestDiv = "";
         String valueOfInterest1 = "";
         String valueOfInterest2 = "";
-        Integer div = 100;
+        Integer diff = 100;
         getValuesFromString values = new getValuesFromString();
         
         reader.readLine();//to get rid of the first line with no relevant datad
@@ -36,9 +44,9 @@ public class weatherCompare {
             valueOfInterest2 = values.values[valueToCompare1];
             valueOfInterest1 = values.values[valueToCompare2];
                    
-            if(div > abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1))){
+            if(diff > abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1))){
                 nameOfLowestDiv = fieldOfInterest;
-                div = abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1));
+                diff = abs(Integer.parseInt(valueOfInterest2) - Integer.parseInt(valueOfInterest1));
             }
         }
         return nameOfLowestDiv;
