@@ -20,13 +20,13 @@ public final class App {
 
         // Your preparation code …
         readFile readFile = new readFile();
-        weatherCompare weather = new weatherCompare();
+        compareValuesFromFileCompare compare = new compareValuesFromFileCompare();
         String dayWithSmallestTempSpread = "";
         String teamWithSmallestGoalSpread = "";
         
         try {
-            dayWithSmallestTempSpread = weather.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/weather.csv"), 1, 2);
-            teamWithSmallestGoalSpread = weather.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/football.csv"), 5, 6);
+            dayWithSmallestTempSpread = compare.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/weather.csv"), 1, 2);
+            teamWithSmallestGoalSpread = compare.getLowestDiverence(readFile.fileStream(".\\src\\main\\resources\\de\\exxcellent\\challenge/football.csv"), 5, 6);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
